@@ -68,8 +68,11 @@ export const ServerHeader: FC<ServerHeaderProps> = ({ server, role }) => {
             <Users className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
         )}
-        {isModerator && (
-          <DropdownMenuItem className="px-3 py-2 text-sm cursor-pointer">
+        {isModerator || isAdmin && (
+          <DropdownMenuItem
+            onClick={() => onOpen("createChannel")}
+            className="px-3 py-2 text-sm cursor-pointer"
+          >
             Створити канал
             <PlusCircle className="h-4 w-4 ml-auto" />
           </DropdownMenuItem>
