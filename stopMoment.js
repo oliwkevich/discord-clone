@@ -1,1 +1,1 @@
-const stopMomentTitle = "Chat Header";
+const stopMomentTitle = "Conversations Setup";
