@@ -1,1 +1,1 @@
-const stopMomentTitle = "Conversations Setup";
+const stopMomentTitle = "Chat Item Component";

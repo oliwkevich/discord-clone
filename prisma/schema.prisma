@@ -37,7 +37,6 @@ model Server {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  messages  Message[]
 
   @@index([profileId])
 }
@@ -87,8 +86,9 @@ model Channel {
   serverId String
   server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages   Message[]
 
   @@index([profileId])
   @@index([serverId])
@@ -103,16 +103,17 @@ model Message {
   memberId String
   member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 
-  serverId String
-  server   Server @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  channelId String
+  channel   Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  deleted Boolean @default(false)
+  deleted  Boolean @default(false)
+  serverId String?
 
   @@index([memberId])
-  @@index([serverId])
+  @@index([channelId])
 }
 
 model Conversation {
