@@ -62,15 +62,23 @@ export const ChatInput = ({ apiUrl, name, query, type }: ChatInputProps) => {
                   >
                     <Plus className="text-white dark:text-[#313338]" />
                   </button>
-                  <Input
-                    disabled
-                    className="px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 
+                  {isLoading ? (
+                    <Input
+                      disabled
+                      className="px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 
+                  focus-visible:ring-0 focus-visible:ring-offset-0 text-zing-600 dark:text-zinc-200"
+                      placeholder="Відправлення..."
+                    />
+                  ) : (
+                    <Input
+                      className="px-14 py-6 bg-zinc-200/90 dark:bg-zinc-700/75 border-none border-0 
                     focus-visible:ring-0 focus-visible:ring-offset-0 text-zing-600 dark:text-zinc-200"
-                    placeholder={`Повідомлення для ${
-                      type === "conversation" ? name : "#" + name
-                    }`}
-                    {...field}
-                  />
+                      placeholder={`Повідомлення для ${
+                        type === "conversation" ? name : "#" + name
+                      }`}
+                      {...field}
+                    />
+                  )}
                   <div className="absolute top-7 right-8">
                     <EmojiPicker
                       onChange={(emoji) =>
